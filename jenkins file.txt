@@ -1,0 +1,35 @@
+pipeline {
+    agent any
+    
+    environment {
+        DOCKER_HUB_CREDENTIALS = credentials('docker')
+        IMAGE_NAME = "daggu1997/webapp"
+        DOCKERFILE_PATH = "/var/lib/jenkins/workspace/web_app/Dockerfile"
+    }
+    
+    stages {
+        stage('Clean Workspace') {
+            steps {
+                cleanWs()
+            }
+        }
+        
+        stage('Checkout') {
+            steps {
+                git branch: 'Master', credentialsId: 'Git', url: 'https://github.com/Chowdary1997/webdev-project'
+            }
+        }
+       stage('Build Docker Image') {
+            steps {
+                script {
+                        def customImage = docker.build("${IMAGE_NAME}:${env.BUILD_ID}", "-f ${DOCKERFILE_PATH} .")
+                }
+            }
+        } 
+    }
+    post {
+        always {
+            cleanWs() // Clean workspace
+        }
+    }
+}
