@@ -1,9 +1,7 @@
 FROM ubuntu:latest
 MAINTAINER rajendra.daggubati1997@gmail.com
-RUN apt update && \
-    apt install apache2 git -y
-RUN apt upgrade -y
-RUN git clone https://github.com/Chowdary1997/webdev-project /var/www/html
+RUN apt install apache2 git -y
+RUN git clone https://github.com/Chowdary1997/webdev-project.git /var/www/html
 WORKDIR /var/www/html
 CMD ["apache2ctl","-D","FOREGROUND"]
 EXPOSE 80
