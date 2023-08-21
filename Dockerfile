@@ -1,8 +1,9 @@
 FROM ubuntu:latest
 MAINTAINER rajendra.daggubati1997@gmail.com
 RUN apt update && \
-    apt install httpd git -y
+    apt install apache2 git -y
+RUN apt upgrade -y
 RUN git clone https://github.com/Chowdary1997/webdev-project /var/www/html
 WORKDIR /var/www/html
-CMD ["/usr/sbin/httpd","-D","FOREGROUND"]
+CMD ["apache2ctl","-D","FOREGROUND"]
 EXPOSE 80
