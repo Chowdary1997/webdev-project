@@ -1,7 +1,9 @@
-FROM ubuntu:latest
-MAINTAINER rajendra.daggubati1997@gmail.com
-RUN apt install apache2 git -y
-RUN git clone https://github.com/Chowdary1997/webdev-project /var/www/html
+FROM alpine:latest
+MAINTAINER choudharysirvi1212@gmail.com
+RUN apk update && apk add apache2
+RUN apk add git
+RUN git clone https://github.com/Chowdary1997/webdev-project.git /var/www/html
+RUN mkdir -p /run/apache2
 WORKDIR /var/www/html
-CMD ["apache2ctl","-D","FOREGROUND"]
+CMD ["httpd","-D","FOREGROUND"]
 EXPOSE 80
