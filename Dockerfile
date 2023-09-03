@@ -6,4 +6,4 @@ RUN git clone https://github.com/Chowdary1997/webdev-project.git /var/www/html
 RUN mkdir -p /run/apache2
 WORKDIR /var/www/html
 CMD ["httpd","-D","FOREGROUND"]
-EXPOSE 80
+EXPOSE 81
