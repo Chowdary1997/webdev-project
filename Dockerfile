@@ -1,5 +1,5 @@
 FROM alpine:latest
-MAINTAINER choudharysirvi1212@gmail.com
+MAINTAINER rajendra.daggubati@gmail.com
 RUN apk update && apk add apache2
 RUN apk add git
 RUN git clone https://github.com/Chowdary1997/webdev-project.git /var/www/html
